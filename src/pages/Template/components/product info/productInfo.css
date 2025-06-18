@@ -1,0 +1,23 @@
+.productInfoMain {
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    .characteristicsTitle {
+        text-align: center;
+    }
+    .productName {
+        h1 {
+            font-size: 22px;
+        }
+    }
+    .productСharacteristics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .addFavoritePrice {
+        .heartIcon {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}

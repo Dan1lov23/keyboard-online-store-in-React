@@ -1,0 +1,26 @@
+.sliderMain {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 600px;
+}
+
+.imgCarousel {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgCarousel {
+    margin-lefT: 5px;
+    img {
+        width: 80px;
+        height: 90px;
+        cursor: pointer;
+    }
+}
+
+.mainImg {
+    img {
+        width: 500px;
+    }
+}
