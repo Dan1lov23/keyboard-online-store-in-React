@@ -1,0 +1,14 @@
+.switchButton {
+    width: 40px;
+    height: 40px;
+    margin: 14px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition: 0.3s;
+}
+
+.switchButton:hover {
+    scale: 1.1;
+}

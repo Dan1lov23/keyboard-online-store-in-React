@@ -1,0 +1,32 @@
+.headerMain {
+    .links {
+        .link {
+            margin: 10px 50px;
+            font-size: 25px;
+            color: white;
+            transition: 0.4s;
+        }
+        .link:hover {
+            color: #2c3e50;
+        }
+    }
+}
+
+@media(max-width: 768px) {
+    .headerMain {
+        .logoTitle {
+            font-size: 13.6px;
+        }
+        .links {
+            .link {
+                margin: 10px 15px;
+                font-size: 15px;
+                color: white;
+                transition: 0.4s;
+            }
+            .link:hover {
+                color: #2c3e50;
+            }
+        }
+    }
+}
