@@ -1,0 +1,11 @@
+.searchInputMain {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    .searchButton {
+        background-color: #3498db;
+        width: 60%;
+        border-radius: 125%;
+        margin-left: 15%;
+    }
+}

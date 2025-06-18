@@ -1,0 +1,23 @@
+.catalogMain {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 1.5%;
+    .productsList {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: end;
+        margin-right: 1%;
+    }
+}
+
+@media(max-width: 768px) {
+    .catalogMain {
+        margin-top: 2%;
+        .productsList {
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+.searchButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.searchButton:hover {
+    scale: 1.05;
+}
+
+.typeCheck {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

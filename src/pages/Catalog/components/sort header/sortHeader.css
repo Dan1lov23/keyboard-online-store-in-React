@@ -1,0 +1,12 @@
+.sortHeaderMain {
+    margin-left: 4%;
+    width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    display: grid;
+    justify-content: center;
+    margin-top: 9%;
+    .main {
+        text-align: center;
+    }
+}

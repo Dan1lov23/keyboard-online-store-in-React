@@ -1,0 +1,7 @@
+.brandsSortMain {
+    display: grid;
+    justify-content: center;
+    .brand {
+        display: flex;
+    }
+}
