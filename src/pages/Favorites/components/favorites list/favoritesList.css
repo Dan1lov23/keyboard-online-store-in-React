@@ -1,0 +1,10 @@
+.favoritesListMain {
+    display: grid;
+    justify-content: center;
+    .favoritesPageTitle {
+        text-align: center;
+    }
+    .clearFavorites {
+        text-align: center;
+    }
+}
