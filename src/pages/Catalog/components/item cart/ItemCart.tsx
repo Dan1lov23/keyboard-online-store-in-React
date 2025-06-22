@@ -20,29 +20,25 @@ export default function ItemCart({ item, addItemFunction }: { item: any, addItem
     }
 
     const addProductToFavorite = (item:any) => {
-        const heart = document.getElementById(item.name) as HTMLImageElement;
-        if (heart.src === "https://img.icons8.com/?size=100&id=87&format=png") {
-            heart.src = "https://img.icons8.com/?size=64&id=qOp2Va50blig&format=png"
+        if (!favorites.includes(item)) {
             dispatch({type: "ADD_PRODUCT_IN_FAVORITES", payload: item});
         } else {
-            heart.src = "https://img.icons8.com/?size=100&id=87&format=png"
             dispatch({type: "DELETE_PRODUCT_IN_FAVORITES", payload: item.id});
         }
-        console.log(heart.src)
     }
 
-    const favoriteCheck = () => {
-        for (let a = 0; a < favorites.length; a++) {
-            if (item === favorites[a]) {
-                const heart = document.getElementById(item.name) as HTMLImageElement;
-                heart.src = "https://img.icons8.com/?size=64&id=qOp2Va50blig&format=png"
-            }
-        }
-    }
+    const isFavorite = favorites.some(fav => fav.id === item.id);
 
     useEffect(() => {
-       favoriteCheck();
-    }, [])
+        console.log(favorites);
+        fetch(`http://localhost:1405/api/getFavorites`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(favorites),
+        })
+    }, [favorites]);
 
     return (
         <>
@@ -54,7 +50,11 @@ export default function ItemCart({ item, addItemFunction }: { item: any, addItem
                 </div>
                 <div className="nameIconsPriceButtons">
                     <div className="name">
-                        <h1>{item.name} <img src={brandsLogoModule(item.brand)} className="logoImg"/> <img src="https://img.icons8.com/?size=100&id=87&format=png" onClick={() => addProductToFavorite(item)} id={item.name}/></h1>
+                        <h1>{item.name} <img src={brandsLogoModule(item.brand)} className="logoImg"/> <img
+                            src={isFavorite ? "https://img.icons8.com/?size=64&id=qOp2Va50blig&format=png" : "https://img.icons8.com/?size=100&id=87&format=png"}
+                            onClick={() => addProductToFavorite(item)}
+                            id={`favorite-${item.id}`}
+                        /></h1>
                     </div>
                     <div className="itemCartAndIcons">
                         {item.iconsArray.map((iconSrc: string, index: number) => (
@@ -72,4 +72,3 @@ export default function ItemCart({ item, addItemFunction }: { item: any, addItem
         </>
     );
 }
-
