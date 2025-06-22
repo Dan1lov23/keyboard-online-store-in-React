@@ -44,7 +44,13 @@ export default function Catalog() {
     }
 
     useEffect(() => {
-        console.log(itemsArray)
+        fetch(`http://localhost:1405/api/getCart`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(itemsArray),
+        })
         setCatalog(productsArray);
     }, [itemsArray])
 
