@@ -1,0 +1,33 @@
+.homeMainMain {
+    margin-top: -2.2%;
+    text-align: center;
+    background-image: url("src/pages/Home/components/img for home page/img1.jpg");
+    width: 100%;
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .homeMainTitle {
+        h1 {
+            font-size: 3rem;
+            color: white;
+        }
+    }
+}
+
+@media(max-width: 568px) {
+    text-align: center;
+    background-image: none;
+    width: 100%;
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .homeMainMain {
+        text-align: center;
+        .homeMainTitle {
+            h1 {
+                font-size: 2rem;
+                color: white;
+            }
+        }
+    }
+}
