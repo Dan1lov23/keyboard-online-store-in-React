@@ -133,45 +133,55 @@
 
 @media (max-width: 768px) {
     .itemCartMain {
-        flex-direction: column;
-        align-items: center;
+        min-width: 400px;
+        flex-direction: column; /* Изменяем направление на колонку */
+        width: 90%; /* Уменьшаем ширину для мобильных */
+        margin: 10px auto; /* Центрируем элемент */
     }
 
     .itemCartImg {
-        margin-bottom: 20px;
-        flex: none;
+        flex: none; /* Убираем гибкость */
+        margin-bottom: 15px; /* Добавляем отступ снизу */
+    }
+
+    .itemCartImg img {
+        max-width: 100%; /* Увеличиваем максимальную ширину изображения */
     }
 
     .nameIconsPriceButtons {
-        padding: 10px;
-        text-align: left;
+        flex: none; /* Убираем гибкость */
+        text-align: left; /* Выравниваем текст влево */
+        .name {
+            .logoImg {
+                width: 60px;
+                height: 20px;
+            }
+        }
     }
 
     .name h1 {
-        font-size: 24px;
-    }
-
-    .itemCartAndIcons {
-        grid-template-columns: repeat(2, 1fr); /* Уменьшаем количество колонок */
-    }
-
-    .iconImg {
-        margin-left: 0; /* Убираем отступ слева */
-        margin-bottom: 10px; /* Добавляем отступ снизу */
+        font-size: 24px; /* Уменьшаем размер шрифта */
     }
 
     .priceAndAddButton {
-        grid-template-columns: 1fr; /* Убираем количество колонок */
-        align-items: flex-start; /* Выравниваем элементы по началу */
-    }
-
-    .priceAndAddButton h1 {
-        font-size: 24px; /* Уменьшаем размер цены */
+        grid-template-columns: 1fr; /* Изменяем на одну колонку */
     }
 
     button {
         width: 100%; /* Кнопка занимает всю ширину */
-        height: 50px; /* Увеличиваем высоту кнопки */
-        font-size: 16px; /* Уменьшаем размер шрифта */
+        margin-top: 10px; /* Добавляем отступ сверху */
+    }
+
+    .itemCartAndIcons {
+        grid-template-columns: repeat(2, 1fr); /* Уменьшаем количество колонок для иконок */
+        .icons {
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .iconImg {
+        margin-left: 0; /* Убираем отступ слева */
     }
 }

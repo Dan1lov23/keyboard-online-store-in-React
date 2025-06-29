@@ -27,7 +27,7 @@ export default function ItemCart({ item, addItemFunction }: { item: any, addItem
         }
     }
 
-    const isFavorite = favorites.some(fav => fav.id === item.id);
+    const isFavorite = favorites.some((fav:any) => fav.id === item.id);
 
     useEffect(() => {
         console.log(favorites);
