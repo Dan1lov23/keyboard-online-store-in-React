@@ -1,7 +1,5 @@
 import "./favoritesList.css";
 
-import {useEffect} from "react";
-
 import {useDispatch, useSelector} from "react-redux";
 
 import ItemCart from "../../../Catalog/components/item cart/ItemCart.tsx"
@@ -22,16 +20,6 @@ export default function FavoritesList() {
         }
         dispatch({type: "INCREMENT_SUM", payload: item.price});
     }
-
-    useEffect(() => {
-        fetch(`http://localhost:1405/api/getFavorites`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(favorites),
-        })
-    }, [favorites]);
 
     return (
         <>
