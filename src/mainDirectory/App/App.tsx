@@ -7,6 +7,8 @@ import Template from "../../pages/Template/page/Template.tsx"
 import Favorites from "../../pages/Favorites/page/Favorites.tsx";
 import Login from "../../pages/Login/page/Login.tsx"
 import Register from "../../pages/Register/page/Register.tsx"
+import Home from "../../pages/Home/page/Home.tsx"
+import User from "../../pages/User/page/User.tsx";
 
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -25,38 +27,10 @@ export default function App() {
         console.log(productForTemplate);
     }, [productForTemplate]);
 
-    const serverWorkCheck = () => {
-        fetch(`http://localhost:1405/api/serverWorkCheck`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-    }
-
-    useEffect(() => {
-        serverWorkCheck();
-        fetch(`http://localhost:1405/api/getFavoritesFromServer`)
-            .then(res => res.json())
-            .then(data => {
-                console.log("Данные с сервера -", data);
-                dispatch({type: "SET_FAVORITES", payload: data});
-            });
-    }, [])
 
     useEffect(() => {
         console.log("itemsArray", itemsArray);
-        fetch(`http://localhost:1405/api/getCartFromServer`)
-        .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                dispatch({type: "SET_CART", payload: data});
-                let sum = 0;
-                for (let a = 0; a < data.length; a++) {
-                    sum += data[a].price * data[a].itemCounter;
-                }
-                console.log(sum);
-                dispatch({type: "SET_SUM", payload: sum});
-            })
+        dispatch({type: "IS_LOGIN", payload: false});
     }, []);
 
 
@@ -82,7 +56,9 @@ export default function App() {
                         <Route path="/template" element={<Template product={productForTemplate} addProductFunction={addItemFunction}/>}/>
                         <Route path="/favorites" element={<Favorites/>}/>
                         <Route path="/login" element={<Login/>}/>
-                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/registration" element={<Register/>}/>
+                        <Route path="/home" element={<Home/>}/>
+                        <Route path="/user" element={<User/>}/>
                     </Routes>
                 </BrowserRouter>
             </div>
