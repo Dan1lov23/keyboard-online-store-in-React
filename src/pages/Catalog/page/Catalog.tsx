@@ -29,10 +29,12 @@ export default function Catalog() {
 
     const dispatch = useDispatch();
     const itemsArray = useSelector((state:any) => state.itemsArray);
+    const isLogin = useSelector((state:any) => state.isLogin);
 
     const pageCheck = catalog.length / itemsPageLimit;
 
     const addItemFunction = (item: Product) => {
+        console.log(isLogin);
         if (itemsArray.some((cartItem: Product) => cartItem.id === item.id)) {
             dispatch({ type: "INCREMENT_PRODUCT_COUNTER", payload: { id: item.id } });
             console.log("Товар добавлен");
@@ -44,13 +46,6 @@ export default function Catalog() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:1405/api/getCart`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(itemsArray),
-        })
         setCatalog(productsArray);
     }, [itemsArray])
 
@@ -64,37 +59,39 @@ export default function Catalog() {
 
     return (
         <>
-            <div className="catalogMain">
-                <SortHeader setProductsArray={setCatalog} />
-                <div className="productsList">
-                    {currentProducts.map((item:Product, index:number) => (
-                        <div key={index}>
-                            <ItemCart item={item} addItemFunction={() => addItemFunction(item)} />
-                        </div>
-                    ))}
+            <div className="catalogMainContainer">
+                <div className="catalogMain">
+                    <SortHeader setProductsArray={setCatalog} />
+                    <div className="productsList">
+                        {currentProducts.map((item:Product, index:number) => (
+                            <div key={index}>
+                                <ItemCart item={item} addItemFunction={() => addItemFunction(item)} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div style={{textAlign: "center", marginTop: "3%"}}>
-                {currentPage === 1 ? (
-                    <div>
-                        <h2>страница {currentPage}</h2>
-                        <NextPageSwitcher nextPageFunction={nextPage} />
-                    </div>
-                ) : (
-                    <div>
-                        {currentPage < pageCheck ? (
-                            <div>
-                                <h2>страница {currentPage}</h2>
-                                <PageSwitcher nextPageFunction={nextPage} previousPageFunction={prevPage}/>
-                            </div>
-                        ) : (
-                            <div>
-                                <h2>страница {currentPage}</h2>
-                                <PrevPageSwitcher previousPageFunction={prevPage}/>
-                            </div>
-                        )}
-                    </div>
-                )}
+                <div style={{textAlign: "center", marginTop: "3%"}}>
+                    {currentPage === 1 ? (
+                        <div>
+                            <h2>{currentPage} / {productsArray.length /itemsPageLimit}</h2>
+                            <NextPageSwitcher nextPageFunction={nextPage} />
+                        </div>
+                    ) : (
+                        <div>
+                            {currentPage < pageCheck ? (
+                                <div>
+                                    <h2>{currentPage} / {productsArray.length /itemsPageLimit}</h2>
+                                    <PageSwitcher nextPageFunction={nextPage} previousPageFunction={prevPage}/>
+                                </div>
+                            ) : (
+                                <div>
+                                    <h2>{currentPage} / {productsArray.length /itemsPageLimit}</h2>
+                                    <PrevPageSwitcher previousPageFunction={prevPage}/>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     )

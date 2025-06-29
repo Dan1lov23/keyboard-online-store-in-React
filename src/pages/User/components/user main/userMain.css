@@ -1,0 +1,160 @@
+.userMainMain {
+    .adminPanel {
+        text-align: center;
+    }
+    .allUsers {
+        display: grid;
+        justify-items: center;
+        .allUsersList {
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 40%;
+            display: grid;
+            .user {
+                margin-top: 3%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                .subUser {
+                    margin-left: 10%;
+                }
+                button {
+                    background-color: #e74c3c;
+                    border: none;
+                    border-radius: 10px;
+                    width: 30%;
+                    height: 80%;
+                }
+                button:hover {
+                    background-color: #c0392b;
+                }
+            }
+        }
+    }
+    .userPanel {
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        .profile {
+            display: grid;
+            justify-items: center;
+            .userIcon {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                border: 1px solid black;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                }
+                button {
+                    font-size: 20px;
+                    border: none;
+                    background-color: #0080F0;
+                    color: white;
+                    border-radius: 25px;
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+        .userProfile {
+            margin-top: 10%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 110%;
+            .subUserProfile {
+                border: 2px solid black;
+            }
+        }
+    }
+    .guestPanel {
+        margin-top: 3%;
+        .title {
+            text-align: center;
+        }
+    }
+}
+
+
+@media (max-width: 568px) {
+    .userMainMain {
+        .adminPanel {
+            text-align: center;
+        }
+        .allUsers {
+            display: grid;
+            justify-items: center;
+            .allUsersList {
+                border: 2px solid black;
+                border-radius: 10px;
+                width: 90%;
+                display: grid;
+                .user {
+                    margin-top: 3%;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    .subUser {
+                        margin-left: 10%;
+                    }
+                    button {
+                        background-color: #e74c3c;
+                        border: none;
+                        border-radius: 10px;
+                        width: 30%;
+                        height: 80%;
+                    }
+                    button:hover {
+                        background-color: #c0392b;
+                    }
+                }
+            }
+        }
+        .userPanel {
+            text-align: center;
+            display: grid;
+            justify-items: center;
+            .profile {
+                display: grid;
+                justify-items: center;
+                .userIcon {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    border: 1px solid black;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                    }
+                    button {
+                        font-size: 20px;
+                        border: none;
+                        background-color: #0080F0;
+                        color: white;
+                        border-radius: 25px;
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+            .userProfile {
+                margin-top: 33%;
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                width: 100%;
+                font-size: 15px;
+                .subUserProfile {
+                    border: 2px solid black;
+                }
+            }
+        }
+        .guestPanel {
+            margin-top: 3%;
+            .title {
+                text-align: center;
+            }
+        }
+    }
+
+}

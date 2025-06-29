@@ -12,12 +12,14 @@
 
 @media(max-width: 768px) {
     .catalogMain {
-        margin-top: 2%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 1.5%;
         .productsList {
-            text-align: center;
             display: grid;
             grid-template-columns: repeat(1, 1fr);
+            justify-items: end;
+            margin-right: 1%;
         }
     }
-
 }
