@@ -1,28 +1,26 @@
 import { createStore } from 'redux';
 
-// Определяем интерфейсы для элементов массива и состояния
 interface Item {
     id: number;
     itemCounter: number;
-    // добавьте другие свойства, если есть
 }
 
 interface DefaultState {
     itemsArray: Item[];
-    productForTemplate: any; // уточните тип, если есть
+    productForTemplate: any;
     sum: number;
     favorites: Item[];
+    isLogin: boolean;
 }
 
-// Начальное состояние с типами
-const defaultState: DefaultState = {
+const defaultState:DefaultState = {
     itemsArray: [],
     productForTemplate: {},
     sum: 0,
     favorites: [],
+    isLogin: false,
 };
 
-// Определяем тип действия
 interface Action {
     type:
         | 'ADD_PRODUCT'
@@ -30,14 +28,21 @@ interface Action {
         | 'REMOVE_PRODUCT'
         | 'DELETE_PRODUCT_FOR_CART'
         | 'SET_PRODUCT_FOR_TEMPLATE'
+        | 'SET_SUM'
         | 'INCREMENT_SUM'
         | 'DECREMENT_SUM'
         | 'DELETE_SUM'
         | 'ADD_PRODUCT_IN_FAVORITES'
         | 'DELETE_PRODUCT_IN_FAVORITES'
-        | 'DELETE_CART';
+        | 'DELETE_CART'
+        | 'GET_CART_FROM_SERVER'
+        | 'GET_CART_SUM_FROM_SERVER'
+        | 'SET_CART'
+        | 'IS_LOGIN'
+        | 'SET_FAVORITES'
+    ;
 
-    payload?: any; // уточните типы для payload в каждом случае ниже
+    payload?: any;
 }
 
 // Типизация редьюсера
@@ -69,7 +74,6 @@ const reducer = (state: DefaultState = defaultState, action: Action): DefaultSta
             };
         }
 
-        case "REMOVE_PRODUCT":
         case "DELETE_PRODUCT_FOR_CART":
             if (typeof action.payload !== 'number') return state;
             return {
@@ -103,6 +107,13 @@ const reducer = (state: DefaultState = defaultState, action: Action): DefaultSta
                 sum: 0,
             };
 
+        case "SET_SUM": {
+            return {
+                ...state,
+                sum: action.payload,
+            }
+        }
+
         case "ADD_PRODUCT_IN_FAVORITES":
             return {
                 ...state,
@@ -116,11 +127,36 @@ const reducer = (state: DefaultState = defaultState, action: Action): DefaultSta
                 favorites: state.favorites.filter(item => item.id !== action.payload),
             };
 
+        case "SET_FAVORITES":
+            return {
+                ...state,
+                favorites: action.payload,
+
+            }
+
+        case "GET_CART_SUM_FROM_SERVER":
+            return {
+                ...state,
+                sum: action.payload,
+            }
+
+        case "SET_CART":
+            return {
+                ...state,
+                itemsArray: action.payload,
+            }
         case "DELETE_CART":
             return {
                 ...state,
                 itemsArray: [],
             };
+
+        case 'IS_LOGIN':
+            return {
+               ...state,
+               isLogin: action.payload,
+            }
+
 
         default:
             return state;
