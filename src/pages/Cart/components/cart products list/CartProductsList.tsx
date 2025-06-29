@@ -6,12 +6,18 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faMinus, faTrash, faX} from "@fortawesome/free-solid-svg-icons";
 
 import type Product from "../../../../inteface anf types/interfaces.ts";
+import {useEffect} from "react";
 
 export default function CartMain() {
-    
+
     const sum = useSelector((state:any) => state.sum);
     const itemsArray = useSelector((state:any) => state.itemsArray);
+    const isLogin = useSelector((state:any) => state.isLogin);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(itemsArray.length);
+    }, [itemsArray]);
 
     const deleteCart = () => {
         dispatch({type: "DELETE_CART"});
@@ -43,13 +49,21 @@ export default function CartMain() {
 
     const addProductFunction = (item: Product) => {
         if (itemsArray.some((cartItem: Product) => cartItem.id === item.id)) {
-            dispatch({ type: "INCREMENT_PRODUCT_COUNTER", payload: { id: item.id } });
-            console.log("Товар добавлен");
+            dispatch({ type: "INCREMENT_PRODUCT_COUNTER", payload: { id: item.id } });;
         } else {
             dispatch({ type: 'ADD_PRODUCT', payload: item });
-            console.log("Такой товар уже есть в корзине");
         }
         dispatch({type: "INCREMENT_SUM", payload: item.price});
+    }
+
+    const payCart = () => {
+        if (isLogin === false) {
+            alert("Чтобы оплатить товары вам нужно войти в аккаунт")
+        } else if (isLogin === true) {
+            alert("Корзина оплачена");
+            dispatch({type: "DELETE_CART"});
+            dispatch({type: "DELETE_SUM"});
+        }
     }
 
     return (
@@ -106,6 +120,11 @@ export default function CartMain() {
                         </div>
                     )
                 ))}
+                <div className="payCart">
+                    <button className="payBtn" onClick={() => payCart()}>
+                        Оплатить товары
+                    </button>
+                </div>
             </div>
         </div>
     );

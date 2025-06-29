@@ -135,6 +135,21 @@
     display: none;
 }
 
+.payBtn {
+    width: 15%;
+    height: 200%;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    color: white;
+}
+
+
+.payBtn:hover {
+    scale: 1.1;
+}
+
 @media (max-width: 768px) {
     .cart-container {
         max-width: 1200px;
@@ -205,6 +220,14 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+    }
+
+    .nameIconsPriceButtons {
+        .name {
+            h1 {
+                font-size: 20px;
+            }
+        }
     }
 
     .quantity-control {
